@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-buttons slot="start">
+      <ion-button color="default" (click)="goToLogin()">
+        <ion-icon slot="icon-only" ios="caret-back-outline" md="caret-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,7 +21,18 @@
       <ion-label position="floating">Apellido</ion-label>
       <ion-input formControlName="apellido"></ion-input>
     </ion-item>
-    
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input formControlName="password"></ion-input>
+    </ion-item>
+
+    <ion-button type="submit">Registrarse</ion-button>
   </form>
 
 </ion-content>
