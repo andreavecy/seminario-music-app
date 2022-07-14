@@ -12,11 +12,19 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item (click)="logout()">Cerrar sesión</ion-item>
-        <ion-item>Funcion 2</ion-item>
+        <ion-item> <ion-icon name="diamond-outline"></ion-icon> Funcion 2</ion-item>
         <ion-item>Funcion 3</ion-item>
         <ion-item>Funcion 4</ion-item>
+        <ion-item>Funcion 5</ion-item>
+        <ion-item>Funcion 6</ion-item>
+        <ion-item>Funcion 7</ion-item>
       </ion-list>
+      <ion-footer>
+        <ion-item (click)="logout()">
+          <ion-icon name="log-out-outline"></ion-icon>
+          Cerrar sesión
+        </ion-item>
+      </ion-footer>
     </ion-content>
   </ion-menu>
   <ion-router-outlet id="content" main></ion-router-outlet>
