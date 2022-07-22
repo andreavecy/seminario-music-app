@@ -20,20 +20,20 @@ export class AuthenticateService {
   }
 
   loginUser(credentials) {
-    // return new Promise((accept, reject) => {
-    //   this.storage.get("user").then((data) => {
-    //     if (
-    //       credentials.email == data.email && 
-    //       credentials.password == "123456"
-    //     ) {
-    //       accept("Login Exitoso");
-    //     } else {
-    //       reject("Login Fallido");
-    //     }Z
-    //   }).catch( err => {
-    //     return reject("Fallo en el Login")
-    //   });
-    // });
+    return new Promise((accept, reject) => {
+      this.storage.get("user").then((data) => {
+        if (
+          credentials.email == data.email && 
+          credentials.password == "123456"
+        ) {
+          accept("Login Exitoso");
+        } else {
+          reject("Login Fallido");
+        }
+      }).catch( err => {
+        return reject("Fallo en el Login")
+      });
+    });
   }
 
   registerUser(userData) {
