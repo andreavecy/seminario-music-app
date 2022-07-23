@@ -20,19 +20,22 @@ export class AuthenticateService {
   }
 
   loginUser(credentials) {
+    let params = {
+      "user": credentials
+    }
     return new Promise((accept, reject) => {
-      this.storage.get("user").then((data) => {
-        if (
-          credentials.email == data.email && 
-          credentials.password == "123456"
-        ) {
-          accept("Login Exitoso");
+      this.http.post(`${this.url_server}login`, params, this.httpOptions)
+      .subscribe((data: any) => {
+        if ( data.status == "OK") {
+          accept(data);
         } else {
-          reject("Login Fallido");
+          reject("Email o Contraseña Invalida");
         }
-      }).catch( err => {
-        return reject("Fallo en el Login")
-      });
+      },
+      (error) => {
+        reject("Error en la peticion")
+      }
+      )
     });
   }
 
@@ -42,7 +45,44 @@ export class AuthenticateService {
     let params = {
       "user": userData
     }
-    return this.http.post(`${this.url_server}signup`, params, this.httpOptions)
+    return new Promise ((accept, reject) => {
+      this.http.post(`${this.url_server}signup`, params, this.httpOptions).subscribe((data: any) => {
+        if (data.status = "OK") {
+          accept(data.msg);
+        }else{
+          reject(data.errors)
+        }
+      },
+      (error) => {
+        reject("Error en la peticion")
+      }
+      )
+      });
+    
+  }
+
+  getCurrentUser(id) {
+    return this.http.get(`${this.url_server}current_user/${id}`, this.httpOptions)
+  }
+
+  updateUser(id, user) {
+    let params = {
+      "user": user
+    }
+    return new Promise ((accept, reject) => {
+    this.http.post(`${this.url_server}update/${id}`, params, this.httpOptions)
+    .subscribe((data: any) =>{
+      if (data.status = "OK"){
+        accept(data)
+      }else{
+        reject(data.errors)
+      }
+    }, 
+    (error) => {
+      reject(error)
+    }
+    )
+  })
   }
 
 }
