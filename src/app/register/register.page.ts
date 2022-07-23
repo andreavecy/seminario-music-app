@@ -42,6 +42,7 @@ export class RegisterPage implements OnInit {
 
   register(registerFormValues) {
     this.authService.registerUser(registerFormValues).subscribe( (data: any) => {
+      console.log("usuario creado", data)
       if (data.id == null){
         "no se hizo login"
       }else{
