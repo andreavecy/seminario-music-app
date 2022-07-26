@@ -30,7 +30,7 @@
   </ion-grid>
 </div>
 <h2> Buscar Usuarios</h2>
-<ion-searchbar (keyup)="getUsers($event.target.value)"></ion-searchbar>
+<ion-searchbar (keyup)="getUsers($event.target)"></ion-searchbar>
 <div class="ion-text-center" *ngIf="searching">
   <ion-spinner name="crescent"></ion-spinner>
 </div>

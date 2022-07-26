@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { AuthenticateService } from '../services/authenticate.service';
-import { Storage } from "@ionic/storage";
+import { Storage } from '@capacitor/storage';
 import { AlertController, NavController } from '@ionic/angular';
 import { UserService } from '../services/user.service';
 
@@ -98,7 +98,8 @@ export class SettingsPage implements OnInit {
     })
   }
 
-  getUsers(keyword: string){
+  getUsers(keyword){
+    keyword = keyword.value
     this.searching = true;
     if ( keyword.length > 0 ) {
       this.userService.getUser(keyword).subscribe(resp => {

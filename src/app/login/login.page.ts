@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup ,Validators } from '@angular/forms';
 import { AlertController, NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
-import { Storage } from "@ionic/storage";
+import { Storage } from '@capacitor/storage';
+
 
 @Component({
   selector: 'app-login',

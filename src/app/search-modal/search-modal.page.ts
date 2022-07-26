@@ -25,6 +25,7 @@ export class SearchModalPage implements OnInit {
   }
 
   getTracks(keyword) {
+    keyword = keyword.value
     this.searching = true;
     if (keyword.length > 0 ) {
       this.musicService.searchTracks(keyword).subscribe( async resp => {
