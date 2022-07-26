@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Storage } from '@capacitor/storage';
 import { HttpClient, HttpHeaders, HttpResponse, HttpRequest } from '@angular/common/http';
 
 @Injectable({
@@ -12,7 +11,7 @@ export class UserService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', observe: 'response' })
   };
 
-  constructor(private storage: Storage, private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getCurrentUser(id) {
     return this.http.get(`${this.url_server}current_user/${id}`, this.httpOptions)

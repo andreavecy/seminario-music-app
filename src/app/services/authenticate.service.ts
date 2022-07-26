@@ -15,8 +15,7 @@ export class AuthenticateService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json', observe: 'response' })
   };
 
-  constructor(private storage: Storage, private http: HttpClient) { 
-    this.storage.create();
+  constructor( private http: HttpClient) { 
   }
 
   loginUser(credentials) {

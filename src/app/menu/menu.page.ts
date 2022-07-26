@@ -11,10 +11,8 @@ import { Storage } from '@capacitor/storage';
 export class MenuPage implements OnInit {
 
   constructor(private menu: MenuController, 
-    private navCtrl: NavController,
-    private storage: Storage
+    private navCtrl: NavController
     ) { 
-      this.storage.create();
     }
 
   ngOnInit() {
@@ -25,7 +23,7 @@ export class MenuPage implements OnInit {
   }
 
   logout() {
-    this.storage.set("isUserLoggedIn", false);
+    Storage.set({key: "isUserLoggedIn", value: "false"});
     this.navCtrl.navigateRoot('/login');
   }
 

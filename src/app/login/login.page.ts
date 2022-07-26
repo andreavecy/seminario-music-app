@@ -27,10 +27,7 @@ export class LoginPage implements OnInit {
     private alertController: AlertController,
     private formBuilder: FormBuilder, 
     private authService: AuthenticateService,
-    private navCtrl: NavController,
-    private storage: Storage) { 
-
-    this.storage.create();
+    private navCtrl: NavController) { 
 
     this.loginForm = this.formBuilder.group({
       
@@ -58,8 +55,8 @@ export class LoginPage implements OnInit {
 
   loginUser(credentials) {
     this.authService.loginUser(credentials).then( (res: any) => {
-      this.storage.set("isUserLoggedIn", true)
-      this.storage.set("user_id", res.user.id)
+      Storage.set({key: "isUserLoggedIn", value: 'true'})
+      Storage.set({key: "user_id", value: res.user.id})
       this.navCtrl.navigateForward("/menu");
     }).catch( err => {
       this.presentAlert("Opps", "Hubo un error", err)

@@ -19,7 +19,6 @@ export class RegisterPage implements OnInit {
     private alertController: AlertController,
     private formBuilder: FormBuilder,
     private navCtrl: NavController,
-    private storage: Storage,
     private authService: AuthenticateService
   ) {
     this.registerForm = this.formBuilder.group({

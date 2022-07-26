@@ -8,11 +8,10 @@ import { Storage } from '@capacitor/storage';
   providedIn: 'root'
 })
 export class IntroGuard implements CanActivate {
-  constructor(private storage: Storage, private router: Router) {
-    this.storage.create();
+  constructor( private router: Router) {
   }
   async canActivate(){
-    const isIntroShowed = await this.storage.get('isIntroShowed');
+    const isIntroShowed = await Storage.get({key: 'isIntroShowed'});
     if(isIntroShowed){
       return true
     } else {

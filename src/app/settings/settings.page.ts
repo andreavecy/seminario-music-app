@@ -32,16 +32,16 @@ export class SettingsPage implements OnInit {
   constructor(
     private sanitizer: DomSanitizer,
     private authService: AuthenticateService,
-    private storage: Storage,
     private alertController: AlertController,
     private navCtrl: NavController,
     private userService: UserService
     ) {
-      this.storage.create();
      }
 
   async ngOnInit() {
-    this.user_id = await this.storage.get("user_id")
+    const { value } = await Storage.get({key: "user_id"})
+    this.user_id = value
+    console.log(this.user_id)
     await this.userService.getCurrentUser(this.user_id).subscribe((data: any) => {
       this.user.email = data.email
       this.user.name = data.name

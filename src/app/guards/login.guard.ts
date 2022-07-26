@@ -8,12 +8,11 @@ import { Storage } from '@capacitor/storage';
   providedIn: 'root'
 })
 export class LoginGuard implements CanActivate {
-  constructor(private storage: Storage, private router: Router) {
-    this.storage.create();
+  constructor(private router: Router) {
   }
 
   async canActivate() {
-    const isUserLoggedIn = await this.storage.get("isUserLoggedIn");
+    const isUserLoggedIn = await Storage.get({key: "isUserLoggedIn"});
     if ( isUserLoggedIn ) {
       return true;
     } else {
