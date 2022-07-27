@@ -26,6 +26,7 @@ export class AuthenticateService {
       this.http.post(`${this.url_server}login`, params, this.httpOptions)
       .subscribe((data: any) => {
         if ( data.status == "OK") {
+          console.log("aqui la data", data)
           accept(data);
         } else {
           reject("Email o Contraseña Invalida");

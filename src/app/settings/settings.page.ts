@@ -41,8 +41,7 @@ export class SettingsPage implements OnInit {
   async ngOnInit() {
     const { value } = await Storage.get({key: "user_id"})
     this.user_id = value
-    console.log(this.user_id)
-    await this.userService.getCurrentUser(this.user_id).subscribe((data: any) => {
+    await this.userService.getCurrentUser(value).subscribe((data: any) => {
       this.user.email = data.email
       this.user.name = data.name
       this.user.last_name = data.last_name

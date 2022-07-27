@@ -55,8 +55,11 @@ export class LoginPage implements OnInit {
 
   loginUser(credentials) {
     this.authService.loginUser(credentials).then( (res: any) => {
+      console.log("res: ", res)
       Storage.set({key: "isUserLoggedIn", value: 'true'})
-      Storage.set({key: "user_id", value: res.user.id})
+      console.log("conversion id a string",(res.user.id).toString())
+      console.log("id como number",res.user.id)
+      Storage.set({key: "user_id", value: (res.user.id).toString()})
       this.navCtrl.navigateForward("/menu");
     }).catch( err => {
       this.presentAlert("Opps", "Hubo un error", err)
